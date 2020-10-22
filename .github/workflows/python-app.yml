@@ -41,7 +41,7 @@ jobs:
     # needs: nothing
     runs-on: ubuntu-latest
     steps:
-      - name: Push to built branch
+    - name: Push to built branch
       uses: Automattic/action-commit-to-branch@master
       with:
         branch: 'release'
