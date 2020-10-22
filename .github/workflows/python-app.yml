@@ -40,11 +40,7 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest    
     steps:
-    # Any prerequisite steps
-    - uses: actions/checkout@master
-
-    - name: Deploy
-      uses: rakovskij-stanislav/vulpy@master
-      env:
-        REPO: self
-        BRANCH: release
+      - env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        name: Release
+        uses: ridedott/release-me-action@master
