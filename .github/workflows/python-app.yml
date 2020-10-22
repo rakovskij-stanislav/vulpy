@@ -44,7 +44,7 @@ jobs:
     - uses: actions/checkout@master
 
     - name: Deploy
-      uses: s0/git-publish-action@master
+      uses: rakovskij-stanislav/vulpy@master
       env:
         REPO: self
         BRANCH: release
