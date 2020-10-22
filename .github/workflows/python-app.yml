@@ -38,9 +38,17 @@ jobs:
         
   release:
     needs: [build]
-    runs-on: ubuntu-latest    
+    # needs: nothing
+    runs-on: ubuntu-latest
     steps:
-    - name: Push after success test
-      run: |
-        git pull
-        git push origin master:release
+      - uses: actions/checkout@v1
+      - name: Git stuff
+        run: |
+          git config user.email "rakovskij.stanislav@gmail.com"
+          git config user.name "Stanislav"
+          git add .
+          git commit -m "Make new release version"
+          git remote set-url origin https://rakovskij-stanislav:${{secrets.ACCESS_TOKEN}}@github.com/rakovskij-stanislav/vulpy.git
+          git remote -v
+          git checkout -b release
+          git push origin master:release --force
