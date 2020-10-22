@@ -40,7 +40,7 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest    
     steps:
-      - env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        name: Release
-        uses: ridedott/release-me-action@master
+    - uses: actions/checkout@master
+    - name: Push after success test
+      run: |
+        git push origin master:release
